@@ -1,0 +1,242 @@
+######################################################################
+###_________________________ The Matrix Recommendations _________________________###
+######################################################################
+
+###_____________________________ First Data _____________________________###
+# Description: Short summaries. النتائج تعتمد على الكلمات الأساسية فقط.
+# الفرق عن البيانات الأخرى: موجزة، بعض الأفلام ذات القصص الطويلة تظهر أقل تشابه.
+
+Method: spaCy
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.90       |
+| Avatar             | 0.90       |
+| Lord of the Rings  | 0.88       |
+| A New Hope         | 0.85       |
+| The Dark Knight    | 0.85       |
+| Star Wars          | 0.83       |
+| Jurassic Park      | 0.83       |
+| The Lion King      | 0.82       |
+| Forrest Gump       | 0.82       |
+| Jaws               | 0.81       |
+| Titanic            | 0.80       |
+
+Method: scikit-learn
+| Film               | Similarity |
+|-------------------|------------|
+| Star Wars          | 0.06       |
+| A New Hope         | 0.05       |
+| Lord of the Rings  | 0.05       |
+| Avatar             | 0.05       |
+| Inception          | 0.00       |
+| The Dark Knight    | 0.00       |
+| Forrest Gump       | 0.00       |
+| Titanic            | 0.00       |
+| Jaws               | 0.00       |
+| The Lion King      | 0.00       |
+| Jurassic Park      | 0.00       |
+
+Method: Hybrid part1 → “spaCy Embeddings Cosine” (scikit-learn + spaCy + NumPy)
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.90       |
+| Avatar             | 0.90       |
+| Lord of the Rings  | 0.88       |
+| A New Hope         | 0.85       |
+| The Dark Knight    | 0.85       |
+| Star Wars          | 0.83       |
+| Jurassic Park      | 0.83       |
+| The Lion King      | 0.82       |
+| Forrest Gump       | 0.82       |
+| Jaws               | 0.81       |
+| Titanic            | 0.80       |
+
+Method: Hybrid part2 → “TF-IDF Cosine (Lemmatized)” (scikit-learn {cosine+TF-IDF} + spaCy + NumPy)
+| Film               | Similarity |
+|-------------------|------------|
+| Star Wars          | 0.06       |
+| A New Hope         | 0.05       |
+| Lord of the Rings  | 0.05       |
+| Avatar             | 0.05       |
+| Inception          | 0.00       |
+| The Dark Knight    | 0.00       |
+| Forrest Gump       | 0.00       |
+| Titanic            | 0.00       |
+| Jaws               | 0.00       |
+| The Lion King      | 0.00       |
+| Jurassic Park      | 0.00       |
+
+Method: Sentence Transformers
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.43       |
+| Forrest Gump       | 0.25       |
+| The Dark Knight    | 0.19       |
+| Avatar             | 0.19       |
+| Lord of the Rings  | 0.18       |
+| A New Hope         | 0.16       |
+| Jurassic Park      | 0.13       |
+| Titanic            | 0.10       |
+| Star Wars          | 0.10       |
+| The Lion King      | 0.08       |
+| Jaws               | 0.04       |
+
+
+###_____________________________ Second Data _____________________________###
+# Description: Long detailed summaries.
+# الفرق عن البيانات الأولى: يعطي نتائج أدق، التشابه أعلى بين الأفلام المعقدة والقريبة في القصة.
+
+Method: spaCy
+| Film               | Similarity |
+|-------------------|------------|
+| Avatar             | 0.97       |
+| Inception          | 0.96       |
+| The Dark Knight    | 0.95       |
+| Jurassic Park      | 0.95       |
+| Lord of the Rings  | 0.94       |
+| Titanic            | 0.94       |
+| Forrest Gump       | 0.94       |
+| Jaws               | 0.93       |
+| The Lion King      | 0.93       |
+| A New Hope         | 0.91       |
+| Star Wars          | 0.90       |
+
+Method: scikit-learn
+| Film               | Similarity |
+|-------------------|------------|
+| Jurassic Park      | 0.05       |
+| Inception          | 0.04       |
+| Avatar             | 0.03       |
+| The Dark Knight    | 0.03       |
+| Lord of the Rings  | 0.03       |
+| The Lion King      | 0.03       |
+| A New Hope         | 0.01       |
+| Forrest Gump       | 0.01       |
+| Jaws               | 0.01       |
+| Titanic            | 0.00       |
+| Star Wars          | 0.00       |
+
+Method: Hybrid part1 → “spaCy Embeddings Cosine”
+| Film               | Similarity |
+|-------------------|------------|
+| Avatar             | 0.97       |
+| Inception          | 0.96       |
+| The Dark Knight    | 0.95       |
+| Jurassic Park      | 0.95       |
+| Lord of the Rings  | 0.94       |
+| Titanic            | 0.94       |
+| Forrest Gump       | 0.94       |
+| Jaws               | 0.93       |
+| The Lion King      | 0.93       |
+| A New Hope         | 0.91       |
+| Star Wars          | 0.90       |
+
+Method: Hybrid part2 → “TF-IDF Cosine (Lemmatized)”
+| Film               | Similarity |
+|-------------------|------------|
+| Jurassic Park      | 0.07       |
+| Inception          | 0.05       |
+| Avatar             | 0.05       |
+| The Dark Knight    | 0.05       |
+| The Lion King      | 0.05       |
+| A New Hope         | 0.04       |
+| Lord of the Rings  | 0.03       |
+| Star Wars          | 0.03       |
+| Titanic            | 0.02       |
+| Forrest Gump       | 0.01       |
+| Jaws               | 0.01       |
+
+Method: Sentence Transformers
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.43       |
+| Avatar             | 0.31       |
+| The Dark Knight    | 0.30       |
+| Jaws               | 0.23       |
+| Forrest Gump       | 0.23       |
+| Jurassic Park      | 0.22       |
+| Star Wars          | 0.17       |
+| A New Hope         | 0.16       |
+| Titanic            | 0.14       |
+| Lord of the Rings  | 0.14       |
+| The Lion King      | 0.09       |
+
+
+###_____________________________ Third Data _____________________________###
+# Description: Summaries without common words.
+# الفرق عن البيانات الثانية: التركيز على المعنى الأساسي، بعض التشابهات تنخفض، النتائج أكثر واقعية لقصة الفيلم.
+
+Method: spaCy
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.91       |
+| Avatar             | 0.90       |
+| Jurassic Park      | 0.89       |
+| The Dark Knight    | 0.89       |
+| Lord of the Rings  | 0.88       |
+| Forrest Gump       | 0.88       |
+| Titanic            | 0.88       |
+| A New Hope         | 0.87       |
+| Star Wars          | 0.86       |
+| Jaws               | 0.82       |
+| The Lion King      | 0.81       |
+
+Method: scikit-learn
+| Film               | Similarity |
+|-------------------|------------|
+| Star Wars          | 0.00       |
+| Inception          | 0.00       |
+| A New Hope         | 0.00       |
+| Avatar             | 0.00       |
+| The Dark Knight    | 0.00       |
+| Lord of the Rings  | 0.00       |
+| Forrest Gump       | 0.00       |
+| Titanic            | 0.00       |
+| Jaws               | 0.00       |
+| The Lion King      | 0.00       |
+| Jurassic Park      | 0.00       |
+
+Method: Hybrid part1 → “spaCy Embeddings Cosine”
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.91       |
+| Avatar             | 0.90       |
+| Jurassic Park      | 0.89       |
+| The Dark Knight    | 0.89       |
+| Lord of the Rings  | 0.88       |
+| Forrest Gump       | 0.88       |
+| Titanic            | 0.88       |
+| A New Hope         | 0.87       |
+| Star Wars          | 0.86       |
+| Jaws               | 0.82       |
+| The Lion King      | 0.81       |
+
+Method: Hybrid part2 → “TF-IDF Cosine (Lemmatized)”
+| Film               | Similarity |
+|-------------------|------------|
+| Forrest Gump       | 0.05       |
+| Star Wars          | 0.00       |
+| Inception          | 0.00       |
+| A New Hope         | 0.00       |
+| Avatar             | 0.00       |
+| The Dark Knight    | 0.00       |
+| Lord of the Rings  | 0.00       |
+| Titanic            | 0.00       |
+| Jaws               | 0.00       |
+| The Lion King      | 0.00       |
+| Jurassic Park      | 0.00       |
+
+Method: Sentence Transformers
+| Film               | Similarity |
+|-------------------|------------|
+| Inception          | 0.42       |
+| Jurassic Park      | 0.30       |
+| The Dark Knight    | 0.25       |
+| Forrest Gump       | 0.24       |
+| A New Hope         | 0.20       |
+| Jaws               | 0.19       |
+| Avatar             | 0.16       |
+| Titanic            | 0.16       |
+| Lord of the Rings  | 0.11       |
+| The Lion King      | 0.10       |
+| Star Wars          | 0.09       |
